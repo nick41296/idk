@@ -19,13 +19,19 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    jsonObect = request.get_json(silent=True, force=True)
+    # Opens JSON database file
+    with open('data.json') as file:
+        jsonData = json.load(file)
 
-    intent = getIntent(jsonObject)
-    params = getParameter(jsonObect)
+    # Gets JSON request object
+    jsonRequest = request.get_json(silent=True, force=True)
+
+    intent = getIntent(jsonRequest)
+    params = getParameter(jsonRequest)
 
     if(intent == "defineTerm"):
-        response = defineTerm(params, jsonObject)
+        response = defineTerm(params, jsonData)
+    elif(inten == "loanCalculator")
 
 
     res = json.dumps(res, indent=4)
@@ -33,13 +39,15 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
-
+# Gets entity of an intent
 def getParameter(jsonObject):
     return jsonObject['queryResult']['parameters']
 
+# Gets the intent
 def getIntent(jsonObject):
     return jsonObject['queryResult']['intent']['displayName']
 
+# Gets definition from data.json for desired_term if it is availible
 def defineTerm(desired_term, jsonObject):
     print(desired_term)
     defs = jsonObject['terms']
@@ -51,31 +59,15 @@ def defineTerm(desired_term, jsonObject):
     else:
         return "fulfillmentText": "Sorry, I don't know that one"
 
-def processRequest(data):
-    print(data)
-    data = data['queryResult']['parameters']
-    dataLength = data['duration'][0]['amount']
-    dataPayments = data['unit-currency'][0]['amount']
-    dataInt = data['percentage'][0]
-    if type(dataInt) is str:
-        dataInt = dataInt[0:len(dataInt)-1]
-    total = dataPayments * dataLength * 1.1
-    response = "ayy that would cost like "  + str(total)
-    return {
-        "fulfillmentText": response
+# Calculates Interest from user given length, principle, interest
+def calculateInterest(parameters):
+    print(parameters)
+
+    length = parameters["blah"]
+    principle = parameters["blah"]
+    interest = parameters["blah"]
+
     }
-
-
-def defineTerm(desired_term, jsonObject):
-    print(desired_term)
-    defs = jsonObject['terms']
-
-    if desired_term in defs:
-        return {
-            "fulfillmentText:" data['terms'][desired_term]
-        }
-    else:
-        return "fulfillmentText": "Sorry, I don't know that one"
 
 
 if __name__ == '__main__':
