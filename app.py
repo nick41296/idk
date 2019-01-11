@@ -32,6 +32,7 @@ def webhook():
     if(intent == "defineTerm"):
         response = defineTerm(params, jsonData)
     elif(inten == "loanCalculator")
+        response = calculateInterest(params)
 
 
     res = json.dumps(res, indent=4)
