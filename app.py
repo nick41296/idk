@@ -19,14 +19,37 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    req = request.get_json(silent=True, force=True)
-    res = processRequest(req)
+    jsonObect = request.get_json(silent=True, force=True)
+
+    intent = getIntent(jsonObject)
+    params = getParameter(jsonObect)
+
+    if(intent == "defineTerm"):
+        response = defineTerm(params, jsonObject)
+
 
     res = json.dumps(res, indent=4)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
 
+
+def getParameter(jsonObject):
+    return jsonObject['queryResult']['parameters']
+
+def getIntent(jsonObject):
+    return jsonObject['queryResult']['intent']['displayName']
+
+def defineTerm(desired_term, jsonObject):
+    print(desired_term)
+    defs = jsonObject['terms']
+
+    if desired_term in defs:
+        return {
+            "fulfillmentText:" data['terms'][desired_term]
+        }
+    else:
+        return "fulfillmentText": "Sorry, I don't know that one"
 
 def processRequest(data):
     print(data)
@@ -43,6 +66,16 @@ def processRequest(data):
     }
 
 
+def defineTerm(desired_term, jsonObject):
+    print(desired_term)
+    defs = jsonObject['terms']
+
+    if desired_term in defs:
+        return {
+            "fulfillmentText:" data['terms'][desired_term]
+        }
+    else:
+        return "fulfillmentText": "Sorry, I don't know that one"
 
 
 if __name__ == '__main__':

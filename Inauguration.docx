@@ -1,0 +1,67 @@
+{
+	"account": {
+		"checking": {
+			"description": "checking account descript",
+      "get_interest": true,
+      "pay_interest": false
+		},
+		"savings": {
+			"description": "savings account descript",
+      "get_interest": true,
+      "pay_interest": false
+		},
+		"credit": {
+			"description": "credit account descript",
+      "get_interest": false,
+      "pay_interest": true
+
+		}
+
+	},
+
+  "scores_interest": {
+    "mortgage":{
+      "760-850": 4.17,
+      "700-759": 4.392,
+      "680-699": 4.569,
+      "660-679": 4.783,
+      "640-659": 5.213,
+      "620-639": 5.759
+    },
+    "credit_card":{
+      "760-850": 14.41,
+      "700-759": 20.23,
+      "680-699": 	22.57,
+      }
+
+    },
+
+  "terms":{
+    "apr": "Your credit card has an annual percentage rate (APR) — which is essentially the price you pay to borrow money from the bank to charge purchases on the card.",
+    "credit": "Your credit is the amount the bank is willing to let you put on your credit card.",
+    "cd": "Certificates of deposit — also called CDs — are deposit accounts that require you to commit your savings for a specified period of time, which may be anywhere from one month to several years — meaning you can’t withdraw the money without paying penalty fees. They have higher interest rates, though. More money for you.",
+    "fico": "Your FICO score is a number between 300 and 850 that evaluates your risk as a borrower. Since the number is based on how well, or poorly, you’ve managed your money obligations over time, lenders use it determine how big of a loan they think you can handle and the likelihood that you’ll pay it back.",
+    "overdraft": "The way an overdraft fee works is if you make a transaction that drops your account balance below zero, the bank covers the difference, or puts your account into negative funds — and then charges you a fee for it — typically around $35. Plus you also owe the bank the difference.",
+    "nsf": "Banks charge a non-sufficient funds fee (NSF) when you don’t have enough money available in your checking account to cover a transaction.",
+  },
+
+	"bank": {
+		"CapitalOne": {
+      "number": "(877) 383-4802",
+			"website": "https://www.capitalone.com/",
+			"credit_site": "https://www.capitalone.com/credit-cards/",
+			"checking_site": "https://www.capitalone.com/bank/checking-accounts/",
+			"savings_site": "https://www.capitalone.com/bank/savings-accounts/"
+		},
+
+		"BankOfAmerica": {
+      "number": "1 (800) 432-1000",
+			"website": "https://www.bankofamerica.com/",
+			"credit_site": "https://www.bankofamerica.com/credit-cards/",
+			"checking_site": "https://www.bankofamerica.com/deposits/checking/advantage-banking/",
+			"savings_site": "https://www.bankofamerica.com/bank/savings-accounts/"
+		}
+
+	}
+
+}
